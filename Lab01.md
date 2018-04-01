@@ -259,7 +259,7 @@ pid_t kernel_thread(int (*fn)(void *), void *arg, unsigned long flags)
 
 **如果U-boot的环境变量bootargs没有传过来路径，或者路径中找不到，或者执行出错，那么kernel还留了一手以防万一。函数尾部有四个run_init_process函数，它们会去4个地方看看有没有init程序，如果以上都不成功，就启动失败了。**
 
-**在rest_init函数最后有一个函数cpu_startup_entry(CPUHP_ONLINE)，这个函数中包含一个函数cpu_idle_loop()，会使Process 0进入死循环状态，Linux系统从内核态切换到用户态，内核的启动完成。**
+**在rest_init函数最后有一个函数cpu_startup_entry(CPUHP_ONLINE)，这个函数中包含一个函数cpu_idle_loop()，会使idle进程进入死循环状态，Linux系统从内核态切换到用户态，内核的启动完成。**
 
 **调试过程至此结束。**
 
